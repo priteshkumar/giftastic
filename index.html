@@ -16,6 +16,7 @@
    }
    button{
     margin-right:5px;
+    margin-bottom:5px;
     background-color: lightblue;
    }
    form{
@@ -95,6 +96,16 @@
 
     });
 
+    function gifClickedfunc(){
+      if($(this).attr("data-state") === "still"){
+        $(this).attr("data-state","animate");
+        $(this).attr("src",$(this).attr("data-animate"));
+      }
+      else{
+       $(this).attr("data-state","still");
+        $(this).attr("src",$(this).attr("data-still")); 
+      }
+    }
 
     function displayMusicgifs() {
       console.log("btnclicked");
@@ -123,7 +134,11 @@
           $im.addClass("img-responsive");
           $im.css("border","1px solid green");
           //$im.attr("height","200px");
-          $im.attr("src",results[i].images.fixed_height.url);
+          $im.attr("src",results[i].images.fixed_height_still.url);
+          $im.attr("data-still",results[i].images.fixed_height_still.url)
+          $im.attr("data-animate",results[i].images.fixed_height.url)
+          $im.attr("data-state","still");
+          $im.bind("click",gifClickedfunc);
           $musicDiv.append($pdiv);
           $musicDiv.append($im);
 
