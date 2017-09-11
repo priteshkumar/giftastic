@@ -34,6 +34,9 @@
    p{
     color: white;
    }
+   label{
+    color: white;
+   }
    </style>
   
   
@@ -118,6 +121,7 @@
           $pdiv.text("Rating: " + results[i].rating);
           var $im =  $("<img>");
           $im.addClass("img-responsive");
+          $im.css("border","1px solid green");
           //$im.attr("height","200px");
           $im.attr("src",results[i].images.fixed_height.url);
           $musicDiv.append($pdiv);
