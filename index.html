@@ -8,7 +8,23 @@
    <style>
    body{
     background: black;
+    background-image:url("./source.gif");
    }
+   #pageheader{
+    margin-top:0px;
+    color:white;
+    background: green;
+    font-size: 50px;
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 60px;
+    opacity:0.6;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-weight:bold;
+   }
+   
    #buttonsdiv{
     padding-top:20px;
     padding-bottom: 20px;
@@ -23,7 +39,7 @@
     color: black;
    }
    #add-music{
-    background: lightblue;
+    background: blue;
    }
   #maincontainer{
      padding-top:50px;
@@ -38,12 +54,24 @@
    label{
     color: white;
    }
+   #gif-form{
+    width:80%;
+   }
    </style>
   
   
 </head>
 
 <body>
+  <div class="container-full">
+  <div class="row">
+  <div class="col-xs-12 text-center">
+  <div id="header">
+  <h1 id="pageheader">Geeky GifTastic</h1>
+  </div>
+  </div>
+  </div>
+  </div> 
   <div class="container-full">
     <div class="row">
       <div class="col-md-10">
@@ -60,9 +88,11 @@
       </div>
       <div class="col-xs-3 pull-right">
        <form id="gif-form">
-         <label for="music-input">Add a Musician</label><br/>
-         <input type="text" id="music-input"><br/>
-          <input id="add-music" type="submit" value="Submit">
+         <div class="form-group">
+         <label for="music-input">Some more Geektopic</label>
+         <input type="text" class="form-control" id="music-input">
+         </div>
+          <input id="add-music" class="btn btn-primary" type="submit" value="Submit">
         </form>
      </div>
    </div>
@@ -70,14 +100,19 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-  var topics = ["bryan adams","metallica","pink floyd","black sabbath","eric clapton","dire straits","tiesto","jimi hendrix",
-                "led zeppelin","armin van burren","beatles","frank sinatra","beethoven"];
+  var topics = ["tesla","steve jobs","mark zuckerberg","cloud computing","physics","CPU","mathematics",
+                "google","space","mars rover","space shuttle","minecraft"];
 
   function renderButtons(){
     $("#buttonsdiv").empty();
     for (var i=0;i<topics.length;i++)
     {
       var $btndiv = $("<button>");
+      $btndiv.addClass("btn btn-primary");
+      $btndiv.css("background","blue");
+      $btndiv.css("margin-right","5px");
+      $btndiv.css("margin-bottom","5px");
+      $btndiv.css("opacity","0.5");
       $btndiv.addClass("musician");
       $btndiv.attr("data-musician",topics[i]);
       $btndiv.text(topics[i]);
