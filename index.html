@@ -13,16 +13,19 @@
    #pageheader{
     margin-top:0px;
     color:white;
-    background: green;
+    background: #212121;
     font-size: 50px;
     width:100%;
     margin-left: auto;
     margin-right: auto;
     min-height: 60px;
-    opacity:0.6;
-    padding-top:10px;
-    padding-bottom:10px;
-    font-weight:bold;
+    opacity:0.9;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-size: 44px;
+    font-family: verdana;
+    color:blue;
+    font-weight: bold;
    }
    
    #buttonsdiv{
@@ -39,7 +42,12 @@
     color: black;
    }
    #add-music{
-    background: blue;
+    background: #212121;
+    font-weight: bold;
+    border:none;
+    margin-left:0px;
+    height: 34px;
+
    }
   #maincontainer{
      padding-top:50px;
@@ -54,8 +62,41 @@
    label{
     color: white;
    }
+   
+
    #gif-form{
-    width:80%;
+    padding-top:20px;
+    padding-bottom: 20px;
+    width:100%;
+   }
+   #mlabel{
+    background: #212121;
+    height:36px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-right: 0px;
+    font-size: 18px;
+    border-radius: 5px 5px;
+    min-width:12%;
+    text-align: center;
+    opacity:0.9;
+    font-weight: bold;
+   }
+   #geekinput{
+    width: 86%;
+    margin-right:0px;
+    padding-right:0px;
+   }
+   #music-input{
+    width:85%;
+    margin-left:0px;
+    padding-left:0px;
+   }
+   #glph{
+    margin-right:5px;
+   }
+   .glyphicon-gift{
+    font-size: 35px;
    }
    </style>
   
@@ -66,37 +107,41 @@
   <div class="container-full">
   <div class="row">
   <div class="col-xs-12 text-center">
-  <div id="header">
-  <h1 id="pageheader">Geeky GifTastic</h1>
+  <div id="header"> 
+  <h2 id="pageheader"><span class="glyphicon glyphicon-gift" id="glph" aria-hidden="true"></span>Geeky GifTastic</h2>
   </div>
   </div>
   </div>
+  </div>
+  <div class="container">
+  <div class="col-xs-12">
+       <form class="form-inline" id="gif-form">
+         <div class="form-group" id="geekinput">
+         <label for="music-input" id="mlabel">GeekOn</label>
+         <input type="text" class="form-control" id="music-input" placeholder="Add Geekish topic">
+         </div>
+          <input id="add-music" class="btn btn-primary" type="submit" value="Search">
+        </form>
+    </div>
   </div> 
-  <div class="container-full">
+  <div class="container">
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-xs-12">
         <div id="buttonsdiv">
          </div>
       </div>
      </div>
   </div>
-  <div id="maincontainer" class="container-full">
+  <div id="maincontainer" class="container">
     <div class="row">
-      <div class="col-xs-8">
+      <div class="col-xs-12">
         <div id="gifs-appear-here">
         </div>
       </div>
-      <div class="col-xs-3 pull-right">
-       <form id="gif-form">
-         <div class="form-group">
-         <label for="music-input">Some more Geektopic</label>
-         <input type="text" class="form-control" id="music-input">
-         </div>
-          <input id="add-music" class="btn btn-primary" type="submit" value="Submit">
-        </form>
+      
      </div>
    </div>
-  </div>
+  
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -112,7 +157,7 @@
       $btndiv.css("background","blue");
       $btndiv.css("margin-right","5px");
       $btndiv.css("margin-bottom","5px");
-      $btndiv.css("opacity","0.5");
+      $btndiv.css("opacity","0.8");
       $btndiv.addClass("musician");
       $btndiv.attr("data-musician",topics[i]);
       $btndiv.text(topics[i]);
@@ -126,9 +171,11 @@
         console.log("addmusicclicked");
         var $musician = $("#music-input").val().trim();
         console.log($musician);
+        if($musician.length >= 2){
         topics.push($musician);
+        $("#music-input").val("");
         renderButtons();
-
+      }
     });
 
     function gifClickedfunc(){
@@ -167,7 +214,8 @@
           $pdiv.text("Rating: " + results[i].rating);
           var $im =  $("<img>");
           $im.addClass("img-responsive");
-          $im.css("border","1px solid green");
+          $im.css("border","2px solid #191970");
+          $im.css("border-radius","10px 10px");
           //$im.attr("height","200px");
           $im.attr("src",results[i].images.fixed_height_still.url);
           $im.attr("data-still",results[i].images.fixed_height_still.url)
