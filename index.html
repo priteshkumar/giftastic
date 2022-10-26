@@ -192,11 +192,10 @@
     function displayMusicgifs() {
       console.log("btnclicked");
       var $musician = $(this).attr("data-musician");
-      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        $musician + "&api_key=dc6zaTOxFJmzC&limit=10";
+      var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC" + "&q=" +
+        $musician + "&limit=10";
 
-      $.ajax({
-        url: queryURL,
+      $.rl: queryURL,
         method: "GET"
       }).done(function(response) {
       
