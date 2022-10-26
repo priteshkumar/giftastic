@@ -192,8 +192,8 @@
     function displayMusicgifs() {
       console.log("btnclicked");
       var $musician = $(this).attr("data-musician");
-      var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=s4e9WFChgErWZFcmh0pSY4Pgqf9dEx8B" + "&q=" +
-        $musician + "&limit=10";
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        $musician + "&api_key=s4e9WFChgErWZFcmh0pSY4Pgqf9dEx8B" + "&limit=10";
 
       $.rl: queryURL,
         method: "GET"
